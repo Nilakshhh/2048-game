@@ -1,3 +1,10 @@
+## 2048 Game 
+Creating this 2048 game to put my Web-D skills to work
+
+# Target to add following functionalities 
+i)Basic applicxation of the game
+ii)Keep score of the game
+iii)Keep a personal high score check and high score registered under individual names
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

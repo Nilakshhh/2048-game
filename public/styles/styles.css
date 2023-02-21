@@ -1,0 +1,11 @@
+body{
+    background-color: aliceblue;
+    display: flex;
+    flex-direction: column;
+}
+footer{
+    background-color: beige;
+    padding: 8px;
+    text-align: center;
+    margin-top: auto;
+}
