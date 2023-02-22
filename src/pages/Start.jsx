@@ -1,10 +1,23 @@
 import React from "react";
+import Clippy from "../components/Clippy";
+import Bigbutton from "../components/Bigbutton";
+import { Link } from "react-router-dom";
 
 function Start() {
   return (
-    <footer className="foo">
-        Made with love💗 by Nilaksh
-    </footer>
+    <>
+        <div>
+        <h1>Welcome to 2048</h1>
+        <Link to="/">        
+          <Bigbutton buttonDisplay="Login"/>
+        </Link>
+        <Link to="/game">
+          <Bigbutton buttonDisplay="Start Game as Guest"/>
+        </Link>
+        <Link to="/rules">Check the rules here</Link>
+        <Clippy />
+        </div>
+    </>
   );
 }
 export default Start;
