@@ -7,7 +7,9 @@ function Start() {
   return (
     <>
         <div>
+        <div className="main-page-heading-box">
         <h1>Welcome to 2048</h1>
+        </div>
         <Link to="/">        
           <Bigbutton buttonDisplay="Login"/>
         </Link>
