@@ -16,8 +16,10 @@ function Start() {
         <Link to="/game">
           <Bigbutton buttonDisplay="Start Game as Guest"/>
         </Link>
-        <Link to="/rules">Check the rules here</Link>
-        <Clippy />
+        <Link to="/rules">
+          <Bigbutton buttonDisplay="Rules"/>
+        </Link>
+        
         </div>
     </>
   );
