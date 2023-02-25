@@ -1,11 +1,16 @@
 import React from "react";
-import Clippy from "../components/Clippy";
+import Grid from "../components/Grid";
 
 function Game() {
     return (
       <>
-          <h1>hi</h1>
-          <Clippy />
+        <div className="main-page-heading-box">
+          <h1>2048 Game</h1>
+        </div>
+        <div className="grid-box">
+        <Grid />
+        </div>
+
       </>
     );
   }

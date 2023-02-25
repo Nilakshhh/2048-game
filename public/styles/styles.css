@@ -1,6 +1,6 @@
 :root {
-  --primary: #f542a1;
-  --secondary: #c90e72;
+  --primary: #42d1f5;
+  --secondary: #370ec9;
 }
 
 
@@ -33,10 +33,10 @@ footer{
 
 /*******************main-page-heading********************/
 .main-page-heading-box{
-  margin: 20px 25vw;
+  margin: 20px auto;
   padding: auto;
   background-color: beige;
-  width: 50vw;
+  width: 30vw;
   height: 60px;
   border-radius: 5px;
   text-align: center;
@@ -53,7 +53,7 @@ footer{
   padding: 8px 24px;
   border: none;
   border-radius: 8px;
-  background-color: var(--primary);
+  background-color: #42d1f5;
   color: white;
   margin: 15px;
   box-shadow: 0px 8px 0px 0px var(--secondary);
@@ -62,4 +62,127 @@ footer{
 .custom-btn:active {
   box-shadow: 0px 4px 0px 0px var(--secondary);
   transform: translateY(2%);
+}
+ /**************************grid*************************/
+ .game {
+  margin: 10px auto;
+  background-color: #bbada0;
+  border-radius: 6px;
+  width: 450px;
+  height: 450px;
+  padding: 12px;
+  box-sizing: border-box;
+}
+
+.grid {
+  position: absolute;
+  z-index: 1;
+}
+
+.playground {
+  position: absolute;
+  z-index: 2;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+.row {
+  margin-bottom: 12px;
+}
+
+.row:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.cell {
+  width: 97.5px;
+  height: 97.5px;
+  margin-right: 12px;
+  float: left;
+  border-radius: 3px;
+  background: rgba(238, 228, 218, 0.35);
+}
+
+.cell:last-child {
+  margin: 0;
+}
+
+[class^="box"] {
+  position: absolute;
+  border-radius: 3px;
+  font-size: 53px;
+  width: 98px;
+  height: 98px;
+}
+
+.title {  
+  text-align: center;
+  line-height: 98px;
+}
+
+[class$="2"] {
+  color: #776e65;
+  background-color: #eee4da;
+}
+
+[class$="4"] {
+  color: #776e65;
+  background-color: #ede0c8;
+}
+
+[class$="8"] {
+  color: #f9f6f2;
+  background-color: #f2b179;
+}
+
+[class$="16"] {
+  color: #f9f6f2;
+  background-color: #f59563;
+}
+
+[class$="32"] {
+  color: #f9f6f2;
+  background-color: #f67c5f;
+}
+
+[class$="64"] {
+  color: #f9f6f2;
+  background-color: #f65e3b;
+}
+
+[class$="128"] {
+  color: #f9f6f2;
+  background-color: #edcf72;
+  font-size: 43px;
+}
+
+[class$="256"] {
+  color: #f9f6f2;
+  background-color: #edcc61;
+  font-size: 43px;
+}
+
+[class$="512"] {
+  color: #f9f6f2;
+  background-color: #edc850;
+  font-size: 43px;
+}
+
+[class$="1024"] {
+  color: #f9f6f2;
+  background-color: #edc53f;
+  font-size: 33px;
+}
+
+[class$="2048"] {
+  color: #f9f6f2;
+  background-color: #e4be3d;
+  font-size: 33px; 
+}
+
+[class$="4096"] {
+  color: #f9f6f2;
+  background-color: #e4b13d;
+  font-size: 33px; 
 }
