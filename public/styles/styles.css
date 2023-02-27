@@ -45,6 +45,19 @@ footer{
   justify-content: center;
 }
 
+/********************arrow-box*********************/
+.arrow-box{
+  margin: 20px auto;
+  padding: auto;
+  width: 30vw;
+  height: 60px;
+  border-radius: 5px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 /******************************button******************************/
 .custom-btn {
   font-size: 32px;

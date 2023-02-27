@@ -1,6 +1,5 @@
 import React from "react";
-import Grid from "../components/Grid";
-
+import Bigbutton from '../components/Bigbutton';
 function Game() {
     return (
       <>
@@ -8,8 +7,46 @@ function Game() {
           <h1>2048 Game</h1>
         </div>
         <div className="grid-box">
-        <Grid />
+        <>
+          <div class="game">
+      <div class="grid">
+        <div class="row">
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
         </div>
+        <div class="row">
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+        </div>
+        <div class="row">
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+        </div>
+        <div class="row">
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+        </div>
+      </div>
+      <div class="playground">
+      </div>
+    </div> 
+    </>
+    </div>
+    <div className="arrow-box">
+    <Bigbutton buttonDisplay="↑" />
+    <Bigbutton buttonDisplay="↓" />
+    <Bigbutton buttonDisplay="→" />
+    <Bigbutton buttonDisplay="←" />
+    </div>
+
 
       </>
     );
