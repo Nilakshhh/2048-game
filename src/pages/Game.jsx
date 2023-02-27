@@ -1,6 +1,111 @@
-import React from "react";
+import React from 'react';
 import Bigbutton from '../components/Bigbutton';
+import { useState, useEffect } from "react";
+
 function Game() {
+  var doc = document;
+  var drawBox = function (value, x, y) {
+    var elm = doc.createElement("div");
+    elm.className = "box-" + value;
+    elm.style = "transform: translate(" + x + "px," + y + "px)";
+  
+    var title = doc.createElement("div");
+    title.className = "title";
+    title.innerText = value;
+  
+    elm.appendChild(title);
+    doc.getElementsByClassName("playground")[0].appendChild(elm);
+  }
+
+
+const [initialArray, setinitialArray] = useState(
+  [[{val:0, x:0, y:0}, {val:0, x:109, y:0}, {val:0, x:219, y:0}, {val:0, x:328, y:0}],
+  [{val:0, x:0, y:109}, {val:0, x:109, y:109}, {val:0, x:219, y:109}, {val:0, x:328, y:109}],
+  [{val:0, x:0, y:219}, {val:0, x:109, y:219}, {val:0, x:219, y:219}, {val:0, x:328, y:219}],
+  [{val:0, x:0, y:328}, {val:0, x:109, y:328}, {val:0, x:219, y:328}, {val:0, x:328, y:328}]
+]);
+
+
+function load() {
+  document.getElementsByClassName("playground")[0].innerHTML="";
+  initialArray.forEach(row => {
+  row.forEach(element => {
+    drawBox(element.val,element.x,element.y)
+    });
+  });
+}
+
+
+useEffect(() => {
+  load();
+},[initialArray]);
+
+
+function genRandom(){
+const randomNumber = Math.floor(Math.random() * 4);
+return randomNumber;
+}
+
+function start(){
+  setinitialArray(prevState => {
+    const newArray = [...prevState];
+    for (let i = 0; i < newArray.length; i++) {
+      for (let j = 0; j < newArray[i].length; j++) {
+        newArray[i][j].val=0;
+      }
+    }
+    var ran1 = genRandom();
+    var ran2 = genRandom();
+    newArray[ran1][ran2].val=2;
+    return newArray;
+  });
+}
+
+
+function handleLeftClick(){
+  setinitialArray(prevState => {
+   const newArray = [...prevState];
+    for (let i = 0; i < newArray.length; i++) {
+      for (let j = 0; j < newArray[i].length-1; j++) {
+        for(let k = j+1; k < newArray[i].length; k++){
+          if(newArray[i][k]!==0){
+            if(newArray[i][j] === newArray[i][k]){
+              newArray[i][j] = newArray[i][j] + newArray[i][k];
+              break;
+            }
+            else{
+              break;
+            }
+          }          
+        }
+      }
+    }
+    for(let i = 0; i < newArray.length; i++){
+      for(let j = 0; j < newArray[i].length; j++){
+        if(newArray[i][j] !== 0){
+          for(let k = 0; k < newArray[i].length; k++){
+            if(newArray[i][k] === 0){
+              newArray[i][k] = newArray[i][j];
+              newArray[i][j] = 0;
+            }
+          }
+        }
+      }
+    }
+
+    var checkArray = [];
+    for(let i = 0; i < newArray.length; i++){
+      if(newArray[i][newArray.length]!==0){
+        checkArray.push(i);
+      }
+    }
+    var ran1 = genRandom();
+    newArray[ran1][newArray.length-1].val=2;
+    return newArray;
+  });
+}
+
+  
     return (
       <>
         <div className="main-page-heading-box">
@@ -8,34 +113,34 @@ function Game() {
         </div>
         <div className="grid-box">
         <>
-          <div class="game">
-      <div class="grid">
-        <div class="row">
-          <div class="cell"></div>
-          <div class="cell"></div>
-          <div class="cell"></div>
-          <div class="cell"></div>
+          <div className="game">
+      <div className="grid">
+        <div className="row">
+          <div className="cell"></div>
+          <div className="cell"></div>
+          <div className="cell"></div>
+          <div className="cell"></div>
         </div>
-        <div class="row">
-          <div class="cell"></div>
-          <div class="cell"></div>
-          <div class="cell"></div>
-          <div class="cell"></div>
+        <div className="row">
+          <div className="cell"></div>
+          <div className="cell"></div>
+          <div className="cell"></div>
+          <div className="cell"></div>
         </div>
-        <div class="row">
-          <div class="cell"></div>
-          <div class="cell"></div>
-          <div class="cell"></div>
-          <div class="cell"></div>
+        <div className="row">
+          <div className="cell"></div>
+          <div className="cell"></div>
+          <div className="cell"></div>
+          <div className="cell"></div>
         </div>
-        <div class="row">
-          <div class="cell"></div>
-          <div class="cell"></div>
-          <div class="cell"></div>
-          <div class="cell"></div>
+        <div className="row">
+          <div className="cell"></div>
+          <div className="cell"></div>
+          <div className="cell"></div>
+          <div className="cell"></div>
         </div>
       </div>
-      <div class="playground">
+      <div className="playground">
       </div>
     </div> 
     </>
@@ -43,12 +148,12 @@ function Game() {
     <div className="arrow-box">
     <Bigbutton buttonDisplay="↑" />
     <Bigbutton buttonDisplay="↓" />
-    <Bigbutton buttonDisplay="→" />
-    <Bigbutton buttonDisplay="←" />
+    <button className="custom-btn btn-12" /*onClick={start}*/>→</button>
+    <button className="custom-btn btn-12" onClick={handleLeftClick}>←</button>
     </div>
-
-
+    <button className="custom-btn btn-12" onClick={start}>click</button>
       </>
     );
   }
   export default Game;
+  

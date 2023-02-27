@@ -59,6 +59,7 @@ footer{
 }
 
 /******************************button******************************/
+
 .custom-btn {
   font-size: 32px;
   font-family: 'Nunito Sans';
@@ -133,7 +134,10 @@ footer{
   text-align: center;
   line-height: 98px;
 }
+[class$="0"] {
+  visibility: hidden;
 
+}
 [class$="2"] {
   color: #776e65;
   background-color: #eee4da;
