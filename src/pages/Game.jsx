@@ -57,7 +57,10 @@ function start(){
     var ran1 = genRandom();
     var ran2 = genRandom();
     newArray[ran1][ran2].val=2;
+    //newArray[0][1].val=2;
+        
     return newArray;
+    
   });
 }
 
@@ -65,43 +68,37 @@ function start(){
 function handleLeftClick(){
   setinitialArray(prevState => {
    const newArray = [...prevState];
-    for (let i = 0; i < newArray.length; i++) {
-      for (let j = 0; j < newArray[i].length-1; j++) {
-        for(let k = j+1; k < newArray[i].length; k++){
-          if(newArray[i][k]!==0){
-            if(newArray[i][j] === newArray[i][k]){
-              newArray[i][j] = newArray[i][j] + newArray[i][k];
-              break;
+    for(let i = 0; i<newArray.length; i++){
+      for(let j = newArray.length-1; j>0; j--){
+        if(newArray[i][j].val !== 0){
+            if(newArray[i][j-1].val === 0){
+              newArray[i][j-1].val = newArray[i][j].val;
+              newArray[i][j].val = 0;
+              
             }
-            else{
-              break;
+            else if(newArray[i][j-1].val === newArray[i][j].val){
+              newArray[i][j-1].val *= 2;
+              newArray[i][j].val = 0; 
             }
-          }          
-        }
-      }
-    }
-    for(let i = 0; i < newArray.length; i++){
-      for(let j = 0; j < newArray[i].length; j++){
-        if(newArray[i][j] !== 0){
-          for(let k = 0; k < newArray[i].length; k++){
-            if(newArray[i][k] === 0){
-              newArray[i][k] = newArray[i][j];
-              newArray[i][j] = 0;
-            }
-          }
+            /*else if(newArray[i][j-1].val !== newArray[i][j].val){
+              
+            }*/
+          
         }
       }
     }
 
-    var checkArray = [];
+    let checkArray = [];
     for(let i = 0; i < newArray.length; i++){
-      if(newArray[i][newArray.length]!==0){
+      if(newArray[i][newArray.length-1].val === 0){
         checkArray.push(i);
       }
     }
-    var ran1 = genRandom();
+    var ran1 = Math.floor(Math.random() * checkArray.length);
     newArray[ran1][newArray.length-1].val=2;
+    //newArray[2][newArray.length-1].val=4;
     return newArray;
+    
   });
 }
 
