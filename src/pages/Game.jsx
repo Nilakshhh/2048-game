@@ -67,6 +67,7 @@ function start(){
 
 function handleLeftClick(){
   setinitialArray(prevState => {
+    console.log("exec");
    const newArray = [...prevState];
     for(let i = 0; i<newArray.length; i++){
       for(let j = newArray.length-1; j>0; j--){
@@ -74,21 +75,17 @@ function handleLeftClick(){
             if(newArray[i][j-1].val === 0){
               newArray[i][j-1].val = newArray[i][j].val;
               newArray[i][j].val = 0;
-              
             }
             else if(newArray[i][j-1].val === newArray[i][j].val){
               newArray[i][j-1].val *= 2;
               newArray[i][j].val = 0; 
             }
-            /*else if(newArray[i][j-1].val !== newArray[i][j].val){
-              
-            }*/
-          
+            /*else if(newArray[i][j-1].val !== newArray[i][j].val){}*/
         }
       }
     }
-
-    let checkArray = [];
+    
+    /*let checkArray = [];
     for(let i = 0; i < newArray.length; i++){
       if(newArray[i][newArray.length-1].val === 0){
         checkArray.push(i);
@@ -96,11 +93,11 @@ function handleLeftClick(){
     }
     var ran1 = Math.floor(Math.random() * checkArray.length);
     newArray[ran1][newArray.length-1].val=2;
-    //newArray[2][newArray.length-1].val=4;
+    */newArray[2][newArray.length-1].val=4;
     return newArray;
-    
   });
 }
+
 
   
     return (
