@@ -66,36 +66,62 @@ function start(){
 
 
 function handleLeftClick(){
-  setinitialArray(prevState => {
-    console.log("exec");
-   const newArray = [...prevState];
-    for(let i = 0; i<newArray.length; i++){
-      for(let j = newArray.length-1; j>0; j--){
-        if(newArray[i][j].val !== 0){
-            if(newArray[i][j-1].val === 0){
-              newArray[i][j-1].val = newArray[i][j].val;
-              newArray[i][j].val = 0;
-            }
-            else if(newArray[i][j-1].val === newArray[i][j].val){
-              newArray[i][j-1].val *= 2;
-              newArray[i][j].val = 0; 
-            }
-            /*else if(newArray[i][j-1].val !== newArray[i][j].val){}*/
-        }
+  const newArray = [...initialArray];
+  for(let i = 0; i<newArray.length; i++){
+    for(let j = newArray.length-1; j>0; j--){
+      if(newArray[i][j].val !== 0){
+          if(newArray[i][j-1].val === 0){
+            newArray[i][j-1].val = newArray[i][j].val;
+            newArray[i][j].val = 0;
+          }
+          else if(newArray[i][j-1].val === newArray[i][j].val){
+            newArray[i][j-1].val *= 2;
+            newArray[i][j].val = 0; 
+          }
+          /*else if(newArray[i][j-1].val !== newArray[i][j].val){}*/
       }
     }
-    
-    /*let checkArray = [];
-    for(let i = 0; i < newArray.length; i++){
-      if(newArray[i][newArray.length-1].val === 0){
-        checkArray.push(i);
+  }
+  
+  let checkArray = [];
+  for(let i = 0; i < newArray.length; i++){
+    if(newArray[i][newArray.length-1].val === 0){
+      checkArray.push(i);
+    }
+  }
+  var ran1 = Math.floor(Math.random() * checkArray.length);
+  newArray[ran1][newArray.length-1].val=2;
+  //newArray[2][newArray.length-1].val=4;  
+  setinitialArray(newArray);
+}
+function handleRightClick(){
+  const newArray = [...initialArray];
+  for(let i = 0; i<newArray.length; i++){
+    for(let j = 0; j<newArray[i].length - 1; j++){
+      if(newArray[i][j].val !== 0){
+          if(newArray[i][j+1].val === 0){
+            newArray[i][j+1].val = newArray[i][j].val;
+            newArray[i][j].val = 0;
+          }
+          else if(newArray[i][j+1].val === newArray[i][j].val){
+            newArray[i][j+1].val *= 2;
+            newArray[i][j].val = 0; 
+          }
+          /*else if(newArray[i][j-1].val !== newArray[i][j].val){}*/
       }
     }
-    var ran1 = Math.floor(Math.random() * checkArray.length);
-    newArray[ran1][newArray.length-1].val=2;
-    */newArray[2][newArray.length-1].val=4;
-    return newArray;
-  });
+  }
+  
+  let checkArray = [];
+  for(let i = 0; i < newArray.length; i++){
+    if(newArray[i][0].val === 0){
+      checkArray.push(i);
+    }
+  }
+  var ran1 = Math.floor(Math.random() * checkArray.length);
+  newArray[ran1][0].val=2;
+  //newArray[2][newArray.length-1].val=4;  
+  setinitialArray(newArray);
 }
 
 
@@ -142,7 +168,7 @@ function handleLeftClick(){
     <div className="arrow-box">
     <Bigbutton buttonDisplay="↑" />
     <Bigbutton buttonDisplay="↓" />
-    <button className="custom-btn btn-12" /*onClick={start}*/>→</button>
+    <button className="custom-btn btn-12" onClick={handleRightClick}>→</button>
     <button className="custom-btn btn-12" onClick={handleLeftClick}>←</button>
     </div>
     <button className="custom-btn btn-12" onClick={start}>click</button>
