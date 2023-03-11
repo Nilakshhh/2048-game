@@ -44,6 +44,58 @@ footer{
   align-items: center;
   justify-content: center;
 }
+.header {
+  margin: 0px auto;
+  width: 450px;
+  color: #776e65;
+}
+
+.scores-container {
+  float: right;
+  text-align: right;
+}
+
+.score-container {
+  position: relative;
+  display: inline-block;
+  background: #bbada0;
+  padding: 20px 30px;
+  font-size: 30px;
+  height: 30px;
+  line-height: 47px;
+  font-weight: bold;
+  border-radius: 6px;
+  color: white;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.score-container:after {
+  content: "Score";
+  position: absolute;
+  width: 100%;
+  top: 10px;
+  left: 0;
+  text-transform: uppercase;
+  font-size: 13px;
+  line-height: 13px;
+  text-align: center;
+  color: #eee4da;
+}
+
+.logo {
+  font-size: 70px;
+  font-weight: bold;
+}
+
+.sub-header {
+  font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
+  font-size: 17px;
+  line-height: 45px;
+  height: 45px;
+}
+
+
 
 /********************arrow-box*********************/
 .arrow-box{
