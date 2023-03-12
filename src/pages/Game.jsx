@@ -1,5 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from "react";
+import useEventListener from '@use-it/event-listener'
+
 
 function Game() {
   var doc = document;
@@ -15,7 +17,31 @@ function Game() {
     elm.appendChild(title);
     doc.getElementsByClassName("playground")[0].appendChild(elm);
   }
+  const ESCAPE_KEYS = ['27', 'Escape'];
+  const Left_Key = ['37', 'ArrowLeft'];
+  const Up_Key = ['38', 'ArrowUp'];
+  const Right_Key = ['39', 'ArrowRight'];
+  const Down_Key = ['40', 'ArrowDown'];
 
+  function handler({ key }) {
+    if (ESCAPE_KEYS.includes(String(key))) {
+      console.log('Escape key pressed!');
+    }
+    else if (Left_Key.includes(String(key))) {
+      console.log("pr");
+      handleLeftClick();
+    }
+    else if (Up_Key.includes(String(key))) {
+      handleUpClick();
+    }
+    else if (Right_Key.includes(String(key))) {
+      handleRightClick();
+    }
+    else if (Down_Key.includes(String(key))) {
+      handleDownClick();
+    }
+  }
+  useEventListener('keydown', handler);
 
 const [initialArray, setinitialArray] = useState(
   [[{val:0, x:0, y:0}, {val:0, x:109, y:0}, {val:0, x:219, y:0}, {val:0, x:328, y:0}],
@@ -24,8 +50,8 @@ const [initialArray, setinitialArray] = useState(
   [{val:0, x:0, y:328}, {val:0, x:109, y:328}, {val:0, x:219, y:328}, {val:0, x:328, y:328}]
 ]);
 const [score, setscore] = useState(0);
-const [game, setgame] = useState("uninitialised");
-
+const [game, setgame] = useState([{display:"start", mode:"not-started"}]);
+//, {display:"reset",mode:"going-on"}, {display:"Won", mode:"game-won"}, {display:"Lost", mode:"Game-ended-lost"}
 
 function load() {
   document.getElementsByClassName("playground")[0].innerHTML="";
@@ -33,7 +59,7 @@ function load() {
   row.forEach(element => {
     drawBox(element.val,element.x,element.y)
     });
-  });
+  }); 
 }
 
 
@@ -48,21 +74,19 @@ return randomNumber;
 }
 
 function start(){
-  setinitialArray(prevState => {
-    const newArray = [...prevState];
-    for (let i = 0; i < newArray.length; i++) {
-      for (let j = 0; j < newArray[i].length; j++) {
-        newArray[i][j].val=0;
-      }
+  
+  let tempArray = [{display:"reset",mode:"going-on"}];
+  setgame(tempArray);
+  const newArray = [...initialArray];
+  for (let i = 0; i < newArray.length; i++) {
+    for (let j = 0; j < newArray[i].length; j++) {
+      newArray[i][j].val=0;
     }
-    var ran1 = genRandom(newArray.length);
-    var ran2 = genRandom(newArray.length);
-    newArray[ran1][ran2].val=2;
-    //newArray[0][1].val=2;
-        
-    return newArray;
-    
-  });
+  }
+  var ran1 = genRandom(newArray.length);
+  var ran2 = genRandom(newArray.length);
+  newArray[ran1][ran2].val=2;
+  setinitialArray(newArray);
 }
 
 
@@ -207,13 +231,13 @@ function handleDownClick(){
  
     return (
       <>
-      <div class="header">
-    <div><span class="logo">2048</span>
-      <div class="scores-container">
-        <div class="score-container" id="score">{score}</div>
+      <div className="header">
+    <div><span className="logo">2048</span>
+      <div className="scores-container">
+        <div className="score-container" id="score">{score}</div>
       </div>
     </div>
-    <div class="sub-header"><span>Join the numbers and get to the <b>2048</b> tile!</span>
+    <div className="sub-header"><span>Join the numbers and get to the <b>2048</b> tile!</span>
     </div>
   </div>
         <div className="grid-box">
@@ -250,13 +274,7 @@ function handleDownClick(){
     </div> 
     </>
     </div>
-    <div className="arrow-box">
-    <button className="custom-btn btn-12" onClick={handleUpClick}>↑</button>
-    <button className="custom-btn btn-12" onClick={handleDownClick}>↓</button>
-    <button className="custom-btn btn-12" onClick={handleRightClick}>→</button>
-    <button className="custom-btn btn-12" onClick={handleLeftClick}>←</button>
-    </div>
-    <button className="custom-btn btn-12" onClick={start}>click</button>
+    <button className="custom-button" onClick={start}>{game[0].display}</button>
       </>
     );
   }
