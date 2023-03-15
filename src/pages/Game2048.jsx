@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import useEventListener from '@use-it/event-listener'
 
 
-function Game() {
+function Game2048() {
   var doc = document;
   var drawBox = function (value, x, y) {
     var elm = doc.createElement("div");
@@ -50,7 +50,7 @@ const [initialArray, setinitialArray] = useState(
   [{val:0, x:0, y:328}, {val:0, x:109, y:328}, {val:0, x:219, y:328}, {val:0, x:328, y:328}]
 ]);
 const [score, setscore] = useState(0);
-const [game, setgame] = useState([{display:"start", mode:"not-started"}]);
+const [game, setgame] = useState([{display:"start", mode:"not-started", work:true}]);
 //, {display:"reset",mode:"going-on"}, {display:"Won", mode:"game-won"}, {display:"Lost", mode:"Game-ended-lost"}
 
 function load() {
@@ -75,7 +75,7 @@ return randomNumber;
 
 function start(){
   
-  let tempArray = [{display:"reset",mode:"going-on"}];
+  let tempArray = [{display:"reset",mode:"going-on", work:true}];
   setgame(tempArray);
   const newArray = [...initialArray];
   for (let i = 0; i < newArray.length; i++) {
@@ -89,10 +89,32 @@ function start(){
   setinitialArray(newArray);
 }
 
-
+function checkwin(){
+  var full = true;
+  for(var i=0;i<initialArray.length;i++){
+    for(var j=0;j<initialArray.length;j++){
+      if(initialArray[i][j].val === 0){
+        full = false;
+      }
+      if(initialArray[i][j].val === 2048){
+        let tempArray = [{display:"Won", mode:"game-won", work:false}];
+        setgame(tempArray);
+        return false;
+      }
+    }
+  }
+  if(full === true){
+    let tempArray = [{display:"Lost", mode:"Game-ended-lost", work:false}];
+    setgame(tempArray);    
+    return false;
+  }
+  return true;
+}
 
 function handleLeftClick(){
-  let temp = 0;
+  let check = checkwin();
+  if(check === true){
+    let temp = 0;
   const newArray = [...initialArray];
   for (let i = 0; i < newArray.length; i++) {
     for (let j = 1; j < newArray.length; j++) {
@@ -123,8 +145,11 @@ function handleLeftClick(){
   newArray[checkArray[ran1]][newArray.length-1].val = prob<93 ? 2 : 4;
   setscore(score + temp);
   setinitialArray(newArray);
+  }
 }
 function handleRightClick(){
+  let check = checkwin();
+  if(check === true){
   let temp = 0;
   const newArray = [...initialArray];
   for (let i = 0; i < newArray.length; i++) {
@@ -160,7 +185,10 @@ function handleRightClick(){
   setinitialArray(newArray);
   setscore(score + temp);
 }
+}
 function handleUpClick(){
+  let check=checkwin();
+  if(check === true){
   let temp = 0;
   const newArray = [...initialArray];
   for (let j = 0; j < newArray.length; j++) {
@@ -191,9 +219,12 @@ function handleUpClick(){
   newArray[newArray.length-1][checkArray[ran1]].val = prob<93 ? 2 : 4;
   setinitialArray(newArray);
   setscore(score + temp);
-
+  }
 }
 function handleDownClick(){
+  let check = checkwin();
+  if(check === true){
+
   let temp = 0;
   const newArray = [...initialArray];
   for (let j = 0; j < newArray.length; j++) {
@@ -226,7 +257,7 @@ function handleDownClick(){
   newArray[0][checkArray[ran1]].val = prob<93 ? 2 : 4;
   setinitialArray(newArray);
   setscore(score + temp);
-
+  }
 }
  
     return (
@@ -275,8 +306,12 @@ function handleDownClick(){
     </>
     </div>
     <button className="custom-button" onClick={start}>{game[0].display}</button>
+      
+      <>
+      {(game[0].work && <h1>game on</h1>) || <h1>game ended</h1>}
+      </>
       </>
     );
   }
-  export default Game;
+  export default Game2048;
   
