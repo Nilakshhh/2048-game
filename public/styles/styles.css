@@ -7,6 +7,7 @@
 body{
     background-color: aliceblue;
     display: flex;
+    position: relative;
     flex-direction: column;
     margin: 0;
 }
@@ -274,4 +275,15 @@ footer{
   color: #f9f6f2;
   background-color: #e4b13d;
   font-size: 33px; 
+}
+
+
+/*#######################################game-end-box######################*/
+.game-end-box{
+  position: absolute;
+  width: 100vw;
+  top: 0%;
+  background-color: white;
+  z-index: 50;
+  height: 100vh;
 }

@@ -90,31 +90,51 @@ function start(){
 }
 
 function checkwin(){
-  var full = true;
   for(var i=0;i<initialArray.length;i++){
     for(var j=0;j<initialArray.length;j++){
-      if(initialArray[i][j].val === 0){
-        full = false;
-      }
       if(initialArray[i][j].val === 2048){
         let tempArray = [{display:"Won", mode:"game-won", work:false}];
         setgame(tempArray);
+        return;
+      }
+    }
+  }
+  return;
+}
+function checkAdjacentElements(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = 0; j < arr[i].length; j++) {
+      // Check the element to the right (if it exists)
+      if (j < arr[i].length - 1 && arr[i][j].val === arr[i][j+1].val) {
+        return false;
+      }
+
+      // Check the element below (if it exists)
+      if (i < arr.length - 1 && arr[i][j].val === arr[i+1][j].val) {
         return false;
       }
     }
   }
-  if(full === true){
-    let tempArray = [{display:"Lost", mode:"Game-ended-lost", work:false}];
-    setgame(tempArray);    
-    return false;
-  }
+
   return true;
 }
-
+function gamelost(){
+  for(var i=0;i<initialArray.length;i++){
+    for(var j=0;j<initialArray.length;j++){
+      if(initialArray[i][j].val === 0){
+        return;
+      }
+    }
+  }
+  var lost = checkAdjacentElements(initialArray);
+  if(lost === true){
+    let tempArray = [{display:"Lost", mode:"Game-ended-lost", work:false}];
+        setgame(tempArray);
+  }  
+  return;
+}
 function handleLeftClick(){
-  let check = checkwin();
-  if(check === true){
-    let temp = 0;
+  let temp = 0;
   const newArray = [...initialArray];
   for (let i = 0; i < newArray.length; i++) {
     for (let j = 1; j < newArray.length; j++) {
@@ -142,14 +162,14 @@ function handleLeftClick(){
   }
   var ran1 = genRandom(checkArray.length);
   var prob = genRandom(100);
-  newArray[checkArray[ran1]][newArray.length-1].val = prob<93 ? 2 : 4;
+  newArray[checkArray[ran1]][newArray.length-1].val = prob<50 ? 2 : 2048;
   setscore(score + temp);
   setinitialArray(newArray);
+  checkwin();
+  gamelost();
   }
-}
+
 function handleRightClick(){
-  let check = checkwin();
-  if(check === true){
   let temp = 0;
   const newArray = [...initialArray];
   for (let i = 0; i < newArray.length; i++) {
@@ -184,11 +204,11 @@ function handleRightClick(){
   newArray[checkArray[ran1]][0].val = prob<93 ? 2 : 4;
   setinitialArray(newArray);
   setscore(score + temp);
+  checkwin();
+  gamelost();
 }
-}
+
 function handleUpClick(){
-  let check=checkwin();
-  if(check === true){
   let temp = 0;
   const newArray = [...initialArray];
   for (let j = 0; j < newArray.length; j++) {
@@ -219,12 +239,12 @@ function handleUpClick(){
   newArray[newArray.length-1][checkArray[ran1]].val = prob<93 ? 2 : 4;
   setinitialArray(newArray);
   setscore(score + temp);
+  checkwin();
+  gamelost();
   }
-}
-function handleDownClick(){
-  let check = checkwin();
-  if(check === true){
 
+function handleDownClick(){
+ 
   let temp = 0;
   const newArray = [...initialArray];
   for (let j = 0; j < newArray.length; j++) {
@@ -254,10 +274,11 @@ function handleDownClick(){
   }
   var ran1 = genRandom(checkArray.length);
   var prob = genRandom(100);
-  newArray[0][checkArray[ran1]].val = prob<93 ? 2 : 4;
+  newArray[0][checkArray[ran1]].val = prob<95 ? 2 : 4;
   setinitialArray(newArray);
   setscore(score + temp);
-  }
+  checkwin();
+  gamelost();
 }
  
     return (
@@ -308,7 +329,13 @@ function handleDownClick(){
     <button className="custom-button" onClick={start}>{game[0].display}</button>
       
       <>
-      {(game[0].work && <h1>game on</h1>) || <h1>game ended</h1>}
+      {(game[0].work && <h1>game on</h1>) || (
+        <>
+          <div className='game-end-box'>
+            <h1>hell</h1>
+          </div>
+        </>
+      )}
       </>
       </>
     );
