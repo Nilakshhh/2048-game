@@ -277,13 +277,64 @@ footer{
   font-size: 33px; 
 }
 
-
+.hide{
+  opacity: 0;
+}
 /*#######################################game-end-box######################*/
 .game-end-box{
   position: absolute;
   width: 100vw;
   top: 0%;
+  opacity: 100%;
   background-color: white;
   z-index: 50;
   height: 100vh;
+}
+
+.end-screen {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
+  opacity: 0.96;
+}
+
+.end-screen h1 {
+  text-shadow: 2px 2px 5px;
+  padding-top: 100px;
+}
+
+.end-screen p {
+  font-family: verdana, sans-serif;
+  color: lightBlue;
+}
+
+#end-screen-icon {
+  background-image: url(../assets/images/cup.svg);
+  height: 120px;
+  width: 120px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  margin-top: 50px;
+
+}
+
+.end-screen button {
+  font-family: "Hyperspace", "Arial";
+  font-size: 20px;
+  width: 200px;
+  height: 80px;
+  margin-top: 50px;
+  background-color: transparent;
+  color: pink;
+  border-color: rgb(132, 187, 180);
+  border-radius: 10%;
+  animation: blinker 3s linear infinite;
+}
+
+@keyframes blinker {
+  50% { opacity: 0; }
 }

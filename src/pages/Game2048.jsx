@@ -75,7 +75,7 @@ return randomNumber;
 
 function start(){
   
-  let tempArray = [{display:"reset",mode:"going-on", work:true}];
+  let tempArray = [{display:"reset",mode:"going-on", work:false}];
   setgame(tempArray);
   const newArray = [...initialArray];
   for (let i = 0; i < newArray.length; i++) {
@@ -162,7 +162,7 @@ function handleLeftClick(){
   }
   var ran1 = genRandom(checkArray.length);
   var prob = genRandom(100);
-  newArray[checkArray[ran1]][newArray.length-1].val = prob<50 ? 2 : 2048;
+  newArray[checkArray[ran1]][newArray.length-1].val = prob<92 ? 2 : 4;
   setscore(score + temp);
   setinitialArray(newArray);
   checkwin();
@@ -329,16 +329,18 @@ function handleDownClick(){
     <button className="custom-button" onClick={start}>{game[0].display}</button>
       
       <>
-      {(game[0].work && <h1>game on</h1>) || (
+      {(game[0].work && <h1 className='hide'>game on</h1>) || (
         <>
           <div className='game-end-box'>
-            <h1>hell</h1>
+            <div className='end-screen'>
+              <h1>hell</h1>
+            </div>
           </div>
         </>
       )}
       </>
       </>
     );
-  }
+}
   export default Game2048;
   
