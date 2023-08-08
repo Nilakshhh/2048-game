@@ -5,7 +5,7 @@
 
 
 body{
-    background-color: aliceblue;
+    background-color: #F9F5F6;
     display: flex;
     position: relative;
     flex-direction: column;
@@ -33,18 +33,7 @@ footer{
 }
 
 /*******************main-page-heading********************/
-.main-page-heading-box{
-  margin: 20px auto;
-  padding: auto;
-  background-color: beige;
-  width: 30vw;
-  height: 60px;
-  border-radius: 5px;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+
 .header {
   margin: 0px auto;
   width: 450px;
@@ -115,23 +104,7 @@ footer{
 
 /******************************button******************************/
 
-.custom-btn {
-  font-size: 32px;
-  font-family: 'Nunito Sans';
-  font-weight: 600;
-  padding: 8px 24px;
-  border: none;
-  border-radius: 8px;
-  background-color: #42d1f5;
-  color: white;
-  margin: 15px;
-  box-shadow: 0px 8px 0px 0px var(--secondary);
-}
 
-.custom-btn:active {
-  box-shadow: 0px 4px 0px 0px var(--secondary);
-  transform: translateY(2%);
-}
 .custom-button {
   font-size: 32px;
   font-family: 'Nunito Sans';
