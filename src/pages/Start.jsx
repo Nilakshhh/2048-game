@@ -10,7 +10,7 @@ function Start() {
           <h1>2048</h1>
         </div>
       </div>
-      <Link to="/login">        
+      <Link to="/signup">        
         <button class="custom-btn btn-7 f"><span>Login</span></button>
       </Link>
       <Link to="/game">        

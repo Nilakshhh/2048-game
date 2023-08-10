@@ -13,7 +13,7 @@ function App(){
             <Route path="/" element={<Start />} />
             <Route path="/game" element={<Game2048 />} />
             <Route path="/rules" element={<Rules />} />
-            <Route path="/login" element={<CreateUser />} />
+            <Route path="/signup" element={<CreateUser />} />
           </Routes>
         </Router>
         <Footer />

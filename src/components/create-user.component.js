@@ -11,7 +11,9 @@ export default class CreateUser extends Component {
 
     this.state = {
       username: '',
-      password: ''
+      password: '',
+      highscore: 0,
+      responseMessage: '' // Add this state variable
     }
   }
 
@@ -32,18 +34,28 @@ export default class CreateUser extends Component {
 
     const user = {
       username: this.state.username,
-      password: this.state.password
+      password: this.state.password,
+      highscore: this.state.highscore
     }
 
-    console.log(user);
-
-    axios.post('http://localhost:5000/users/add', user)
-      .then(res => console.log(res.data));
+    axios.post('http://localhost:5000/users/register', user)
+      .then(res => {
+        this.setState({
+          responseMessage: res.data // Update the response message
+        });
+      })
+      .catch(error => {
+        this.setState({
+          responseMessage: error.response.data.password || error.response.data // Update the response message on error
+        });
+        console.log(error)
+      });
 
     this.setState({
       username: '',
-      password: ''
-    })
+      password: '',
+      highscore: 0
+    });
   }
 
   render() {
@@ -71,6 +83,7 @@ export default class CreateUser extends Component {
             <input type="submit" value="Create User" className="btn btn-primary" />
           </div>
         </form>
+        <p>{this.state.responseMessage}</p>
       </div>
     )
   }
