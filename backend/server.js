@@ -11,13 +11,14 @@ app.use(cors());
 app.use(express.json());
 
 const uri = "mongodb+srv://dnilaksh05:0s8v4fz0WC4XBoPx@cluster0.mabu795.mongodb.net/?retryWrites=true&w=majority";
-mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true }
-);
+mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true });
 const connection = mongoose.connection;
 connection.once('open', () => {
   console.log("MongoDB database connection established successfully");
 })
-
+app.get('/', (req, res) => {
+  res.send('Hey this is my API running 🥳')
+})
 //const exercisesRouter = require('./routes/exercises');
 const usersRouter = require('./routes/user');
 

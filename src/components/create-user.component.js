@@ -38,7 +38,7 @@ export default class CreateUser extends Component {
       highscore: this.state.highscore
     }
 
-    axios.post('http://localhost:5000/users/register', user)
+    axios.post('https://two048-backend.onrender.com/users/register', user)
       .then(res => {
         this.setState({
           responseMessage: res.data // Update the response message
