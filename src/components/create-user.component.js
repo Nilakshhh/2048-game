@@ -58,33 +58,35 @@ export default class CreateUser extends Component {
     });
   }
 
-  render() {
+  render() {    
     return (
-      <div>
-        <h3>Create New User</h3>
-        <form onSubmit={this.onSubmit}>
-          <div className="form-group"> 
-            <label>Username: </label>
-            <input  type="text"
-                required
-                className="form-control"
-                value={this.state.username}
-                onChange={this.onChangeUsername}
-                />
-            <label>Password: </label>
-            <input  type="password"
-                required
-                className="form-control"
-                value={this.state.password}
-                onChange={this.onChangePassword}
-                />
-          </div>
-          <div className="form-group">
-            <input type="submit" value="Create User" className="btn btn-primary" />
-          </div>
-        </form>
-        <p>{this.state.responseMessage}</p>
-      </div>
-    )
+    <div className='form-container'>
+      <h3 className='form-heading'>Create New User</h3>
+      <form onSubmit={this.onSubmit}>
+        <div className="form-group"> 
+          <label>Username:</label>
+          <input
+            type="text"
+            required
+            className="form-control"
+            value={this.state.username}
+            onChange={this.onChangeUsername}
+          />
+          <label>Password:</label>
+          <input
+            type="password"
+            required
+            className="form-control"
+            value={this.state.password}
+            onChange={this.onChangePassword}
+          />
+        </div>
+        <div className="form-group">
+          <input type="submit" value="Create User" className="btn btn-primary" />
+        </div>
+      </form>
+      <p className="response-message">{this.state.responseMessage}</p>
+    </div>
+  )
   }
 }
