@@ -7,7 +7,7 @@ function Game2048() {
   var doc = document;
   var drawBox = function (value, x, y) {
     var elm = doc.createElement("div");
-    elm.className = "box-" + value;
+    elm.className = "box-" + value*10;
     elm.style = "transform: translate(" + x + "px," + y + "px)";
   
     var title = doc.createElement("div");

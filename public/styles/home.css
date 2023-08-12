@@ -1,11 +1,11 @@
 .heading{
   position: absolute;
-  top: 10vh;
+  top: 12vh;
   left: 35vw;
   height: 15vh;
   width: 30vw;
   text-align: center;
-  font-size: 3vw;
+  font-size: 7vw;
   font-family: 'Borel', cursive;
   color: #102C57;
 }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Link } from "react-router-dom";
 
 export default class CreateUser extends Component {
   constructor(props) {
@@ -60,32 +61,41 @@ export default class CreateUser extends Component {
 
   render() {    
     return (
-    <div className='form-container'>
-      <h3 className='form-heading'>Create New User</h3>
-      <form onSubmit={this.onSubmit}>
-        <div className="form-group"> 
-          <label>Username:</label>
+      <div className='flex justify-center items-center h-screen'>
+    <div className='w-full max-w-xs'>
+      <form className="bg-white shadow-md rounded-xl px-8 pt-6 pb-8 mb-4" onSubmit={this.onSubmit} >
+        <h3 className='text-gray text-3xl font-mono pb-4 flex justify-center'>Signup</h3>
+        <div className="mb-4"> 
+          <label className='block text-gray-700 text-sm font-bold mb-2'>Username:</label>
           <input
             type="text"
             required
-            className="form-control"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            placeholder='Username'
             value={this.state.username}
             onChange={this.onChangeUsername}
           />
-          <label>Password:</label>
+        </div>
+        <div className='mb-4'>
+          <label className='block text-gray-700 text-sm font-bold mb-2'>Password:</label>
           <input
             type="password"
             required
-            className="form-control"
+            placeholder='Pass****'
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             value={this.state.password}
             onChange={this.onChangePassword}
           />
         </div>
-        <div className="form-group">
-          <input type="submit" value="Create User" className="btn btn-primary" />
+        <div className="flex items-center justify-between">
+          <input type="submit" value="Create User" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" />
+          <Link to="/login">        
+            <button className='inline-block align-baseline font-bold text-blue-500 hover:text-blue-800 text-sm '><span>Already an user?</span></button>
+          </Link>
         </div>
       </form>
-      <p className="response-message">{this.state.responseMessage}</p>
+      <p className="text-center text-gray-500 text-lg">{this.state.responseMessage}</p>
+    </div>
     </div>
   )
   }

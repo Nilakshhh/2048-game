@@ -7,10 +7,10 @@ function Start() {
     <>
       <div>
         <div className="heading">
-          <h1>2048</h1>
+          <h1 className="flex-auto font-bold">2048</h1>
         </div>
       </div>
-      <Link to="/signup">        
+      <Link to="/login">        
         <button class="custom-btn btn-7 f"><span>Login</span></button>
       </Link>
       <Link to="/game">        

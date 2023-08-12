@@ -5,6 +5,7 @@ import Footer from './components/Footer.jsx'
 import Game2048 from "./pages/Game2048.jsx";
 import Rules from './pages/Rules.jsx'
 import CreateUser from "./components/create-user.component";
+import Login from "./components/login"
 function App(){
     return(
         <>
@@ -14,6 +15,7 @@ function App(){
             <Route path="/game" element={<Game2048 />} />
             <Route path="/rules" element={<Rules />} />
             <Route path="/signup" element={<CreateUser />} />
+            <Route path="/login" element={<Login />} />
           </Routes>
         </Router>
         <Footer />
