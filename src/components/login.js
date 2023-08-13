@@ -39,15 +39,16 @@ export default class CreateUser extends Component {
           highscore: this.state.highscore
         }
     
-        axios.post('https://two048-backend.onrender.com/users/register', user)
+        axios.post('https://two048-backend.onrender.com/users/login', user)
           .then(res => {
             this.setState({
-              responseMessage: res.data // Update the response message
+              responseMessage: res.data.token // Update the response message
             });
+            console.log(res)
           })
           .catch(error => {
             this.setState({
-              responseMessage: error.response.data.password || error.response.data // Update the response message on error
+              responseMessage: error.response.data.password || error.response.data.username || error.response.data // Update the response message on error
             });
             console.log(error)
           });
