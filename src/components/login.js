@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Login() {
+  const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [highscore] = useState(0); // Assuming highscore is not relevant for login
@@ -29,6 +30,9 @@ function Login() {
       .then(res => {
         setResponseMessage(res.data.token);
         console.log(res);
+        setTimeout(() => {
+          navigate("/");
+        }, 1000);
       })
       .catch(error => {
         setResponseMessage(error.response.data.password || error.response.data.username || error.response.data);
