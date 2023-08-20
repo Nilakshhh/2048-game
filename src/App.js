@@ -6,6 +6,7 @@ import Game2048 from "./pages/Game2048.jsx";
 import Rules from './pages/Rules.jsx'
 import CreateUser from "./components/create-user.component";
 import Login from "./components/login"
+
 function App(){
     return(
         <>

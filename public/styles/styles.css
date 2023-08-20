@@ -87,6 +87,9 @@ footer{
 .but{
   margin: 20px 50%;
 }
+.invisible{
+  visibility: none;
+}
 
 
 /********************arrow-box*********************/

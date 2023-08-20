@@ -30,8 +30,10 @@ function Login() {
       .then(res => {
         setResponseMessage(res.data.token);
         console.log(res);
+        const textElement = document.getElementById("textToUpdate");
+        textElement.textContent = username;
         setTimeout(() => {
-          navigate("/");
+          navigate("/game");
         }, 1000);
       })
       .catch(error => {

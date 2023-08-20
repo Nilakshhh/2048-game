@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function CreateUser() {
+  const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [highscore, setHighscore] = useState(0);
@@ -28,6 +29,11 @@ function CreateUser() {
     axios.post('https://two048-backend.onrender.com/users/register', user)
       .then(res => {
         setResponseMessage(res.data);
+        const textElement = document.getElementById("textToUpdate");
+        textElement.textContent = username;
+        setTimeout(() => {
+          navigate("/game");
+        }, 1000);
       })
       .catch(error => {
         setResponseMessage(error.response.data.password || error.response.data);
