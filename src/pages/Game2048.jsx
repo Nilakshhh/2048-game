@@ -5,6 +5,8 @@ import useEventListener from '@use-it/event-listener'
 
 function Game2048() {
   var doc = document;
+  const name = doc.getElementById("textToUpdate").textContent; 
+  const [username, setUsername] = useState(name);
   var drawBox = function (value, x, y) {
     var elm = doc.createElement("div");
     elm.className = "box-" + value*10;
@@ -28,7 +30,6 @@ function Game2048() {
       console.log('Escape key pressed!');
     }
     else if (Left_Key.includes(String(key))) {
-      console.log("pr");
       handleLeftClick();
     }
     else if (Up_Key.includes(String(key))) {
@@ -196,7 +197,6 @@ function handleRightClick(){
   for(let i = 0; i < newArray.length; i++){
     if(newArray[i][0].val === 0){
       checkArray.push(i);
-      console.log("yes");
     }
   }
   var ran1 = genRandom(checkArray.length);
