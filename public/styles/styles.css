@@ -187,67 +187,67 @@ footer{
   visibility: hidden;
 
 }
-[class$="20"] {
+[class$="2"] {
   color: #776e65;
   background-color: #eee4da;
 }
 
-[class$="40"] {
+[class$="4"] {
   color: #776e65;
   background-color: #ede0c8;
 }
 
-[class$="80"] {
+[class$="8"] {
   color: #f9f6f2;
   background-color: #f2b179;
 }
 
-[class$="160"] {
+[class$="16"] {
   color: #f9f6f2;
   background-color: #f59563;
 }
 
-[class$="320"] {
+[class$="32"] {
   color: #f9f6f2;
   background-color: #f67c5f;
 }
 
-[class$="640"] {
+[class$="64"] {
   color: #f9f6f2;
   background-color: #f65e3b;
 }
 
-[class$="1280"] {
+[class$="128"] {
   color: #f9f6f2;
   background-color: #edcf72;
   font-size: 43px;
 }
 
-[class$="2560"] {
+[class$="256"] {
   color: #f9f6f2;
   background-color: #edcc61;
   font-size: 43px;
 }
 
-[class$="5120"] {
+[class$="512"] {
   color: #f9f6f2;
   background-color: #edc850;
   font-size: 43px;
 }
 
-[class$="10240"] {
+[class$="1024"] {
   color: #f9f6f2;
   background-color: #edc53f;
   font-size: 33px;
 }
 
-[class$="20480"] {
+[class$="2048"] {
   color: #f9f6f2;
   background-color: #e4be3d;
   font-size: 33px; 
 }
 
-[class$="40960"] {
+[class$="4096"] {
   color: #f9f6f2;
   background-color: #e4b13d;
   font-size: 33px; 

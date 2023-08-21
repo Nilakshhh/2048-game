@@ -48,10 +48,10 @@ function CreateUser() {
   return (
     <div className='flex justify-center items-center h-screen'>
       <div className='w-full max-w-xs'>
-        <form className="bg-white shadow-md rounded-xl px-8 pt-6 pb-8 mb-4" onSubmit={onSubmit}>
+        <form className="bg-white shadow-md  px-8 pt-6 pb-8 mb-4 rounded-xl" onSubmit={onSubmit}>
           <h3 className='text-gray text-3xl font-mono pb-4 flex justify-center'>Signup</h3>
-          <div className="mb-4"> 
-            <label className='block text-gray-700 text-sm font-bold mb-2'>Username:</label>
+          <div className="mb-4 nope"> 
+            <label className='block text-gray-700 text-sm  mb-2 font-bold'>Username:</label>
             <input
               type="text"
               required
@@ -61,8 +61,8 @@ function CreateUser() {
               onChange={onChangeUsername}
             />
           </div>
-          <div className='mb-4'>
-            <label className='block text-gray-700 text-sm font-bold mb-2'>Password:</label>
+          <div className='mb-4 nope'>
+            <label className='block text-gray-700 text-sm  mb-2 font-bold'>Password:</label>
             <input
               type="password"
               required
@@ -75,7 +75,7 @@ function CreateUser() {
           <div className="flex items-center justify-between">
             <input type="submit" value="Create User" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" />
             <Link to="/login">        
-              <button className='inline-block align-baseline font-bold text-blue-500 hover:text-blue-800 text-sm '><span>Already an user?</span></button>
+              <button className='inline-block align-baseline text-blue-500 hover:text-blue-800 text-sm font-bold  '><span>Already an user?</span></button>
             </Link>
           </div>
         </form>

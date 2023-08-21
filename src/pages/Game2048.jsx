@@ -9,7 +9,7 @@ function Game2048() {
   const [username, setUsername] = useState(name);
   var drawBox = function (value, x, y) {
     var elm = doc.createElement("div");
-    elm.className = "box-" + value*10;
+    elm.className = "box-" + value;
     elm.style = "transform: translate(" + x + "px," + y + "px)";
   
     var title = doc.createElement("div");
@@ -76,7 +76,7 @@ return randomNumber;
 
 function start(){
   
-  let tempArray = [{display:"reset",mode:"going-on", work:false}];
+  let tempArray = [{display:"reset",mode:"going-on", work:true}];
   setgame(tempArray);
   const newArray = [...initialArray];
   for (let i = 0; i < newArray.length; i++) {
@@ -333,7 +333,7 @@ function handleDownClick(){
         <>
           <div className='game-end-box'>
             <div className='end-screen'>
-              <h1>hell</h1>
+              <h1>Game development in progress</h1>
             </div>
           </div>
         </>

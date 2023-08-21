@@ -48,10 +48,10 @@ function Login() {
   return (
     <div className='flex justify-center items-center h-screen'>
       <div className='w-full max-w-xs'>
-        <form className="bg-white shadow-md rounded-xl px-8 pt-6 pb-8 mb-4" onSubmit={onSubmit} >
+        <form className="bg-white shadow-md  px-8 pt-6 pb-8 mb-4 rounded-xl" onSubmit={onSubmit} >
           <h3 className='text-gray text-3xl font-mono pb-4 flex justify-center'>Login</h3>
-          <div className="mb-4"> 
-            <label className='block text-gray-700 text-sm font-bold mb-2'>Username:</label>
+          <div className="mb-4 nope"> 
+            <label className='block text-gray-700 text-sm mb-2 font-bold'>Username:</label>
             <input
               type="text"
               required
@@ -61,8 +61,8 @@ function Login() {
               onChange={onChangeUsername}
             />
           </div>
-          <div className='mb-4'>
-            <label className='block text-gray-700 text-sm font-bold mb-2'>Password:</label>
+          <div className='mb-4 nope'>
+            <label className='block text-gray-700 text-sm  mb-2 font-bold'>Password:</label>
             <input
               type="password"
               required
