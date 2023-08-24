@@ -51,7 +51,7 @@ const [initialArray, setinitialArray] = useState(
   [{val:0, x:0, y:328}, {val:0, x:109, y:328}, {val:0, x:219, y:328}, {val:0, x:328, y:328}]
 ]);
 const [score, setscore] = useState(0);
-const [game, setgame] = useState([{display:"start", mode:"not-started", work:true}]);
+const [game, setgame] = useState([{display:"start", mode:"not-started", work:true, win:false}]);
 //, {display:"reset",mode:"going-on"}, {display:"Won", mode:"game-won"}, {display:"Lost", mode:"Game-ended-lost"}
 
 function load() {
@@ -76,7 +76,7 @@ return randomNumber;
 
 function start(){
   
-  let tempArray = [{display:"reset",mode:"going-on", work:true}];
+  let tempArray = [{display:"reset",mode:"going-on", work:true, win:false}];
   setgame(tempArray);
   const newArray = [...initialArray];
   for (let i = 0; i < newArray.length; i++) {
@@ -93,8 +93,8 @@ function start(){
 function checkwin(){
   for(var i=0;i<initialArray.length;i++){
     for(var j=0;j<initialArray.length;j++){
-      if(initialArray[i][j].val === 2048){
-        let tempArray = [{display:"Won", mode:"game-won", work:false}];
+      if(initialArray[i][j].val === 8){
+        let tempArray = [{display:"Won", mode:"game-won", work:false, win:true}];
         setgame(tempArray);
         return;
       }
@@ -129,7 +129,7 @@ function gamelost(){
   }
   var lost = checkAdjacentElements(initialArray);
   if(lost === true){
-    let tempArray = [{display:"Lost", mode:"Game-ended-lost", work:false}];
+    let tempArray = [{display:"Lost", mode:"Game-ended-lost", work:false, win:false}];
         setgame(tempArray);
   }  
   return;
@@ -329,16 +329,60 @@ function handleDownClick(){
     <button className="custom-button" onClick={start}>{game[0].display}</button>
       
       <>
-      {(game[0].work && <h1 className='hide'>game on</h1>) || (
+      {(game[0].work) || (game[0].win && (
         <>
-          <div className='game-end-box'>
-            <div className='end-screen'>
-              <h1>Game development in progress</h1>
+          <div className='flex justify-center items-center m-0 opacity-100 bg-white h-screen w-screen top-0 z-50 absolute'>
+            <div className="flex items-center justify-center">
+              <div className="p-8 bg-slate-200 rounded-lg shadow-md">
+              <i className="fa-solid fa-trophy fa-3x"></i>
+                <h1 className="text-3xl mb-4 font-semibold">You Won!! {username}</h1>
+                <p className="mb-6 text-lg">Congratulations! You've completed the game.</p>
+                {((username !== "") && 
+                <>
+                <div className="mb-4 none">
+                  <p className="text-gray-600 none">Your score: {score}</p>
+                  <p className="text-gray-600 none">Your score has been updated</p>
+                </div>
+                </>) || (
+                  <>
+                  <div className="mb-4 none">
+                  <p className="text-gray-600 none">Your score: {score}</p>
+                </div>
+                  </>
+                )}
+                
+                
+              </div>
+            </div>
+          </div>
+        </>
+      )) ||(
+        <>
+          <div className='flex justify-center items-center m-0 opacity-100 bg-white h-screen w-screen top-0 z-50 absolute'>
+            <div className="flex items-center justify-center">
+              <div className="p-8 bg-slate-200 rounded-lg shadow-md">
+              <i className="fa-regular fa-face-frown"></i>
+                <h1 className="text-3xl mb-4 font-semibold">Game Ended!! {username}</h1>
+                {((username !== "") && 
+                <>
+                <div className="mb-4 none">
+                  <p className="text-gray-600 none">Your score: {score}</p>
+                  <p className="text-gray-600 none">Your score has been updated</p>
+                </div>
+                </>) || (
+                  <>
+                  <div className="mb-4 none">
+                  <p className="text-gray-600 none">Your score: {score}</p>
+                </div>
+                  </>
+                )}
+              </div>
             </div>
           </div>
         </>
       )}
       </>
+
       </>
     );
 }
