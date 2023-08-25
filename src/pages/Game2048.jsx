@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from "react";
 import useEventListener from '@use-it/event-listener'
-
+import { Link } from "react-router-dom";
 
 function Game2048() {
   var doc = document;
@@ -332,27 +332,33 @@ function handleDownClick(){
       {(game[0].work) || (game[0].win && (
         <>
           <div className='flex justify-center items-center m-0 opacity-100 bg-white h-screen w-screen top-0 z-50 absolute'>
-            <div className="flex items-center justify-center">
-              <div className="p-8 bg-slate-200 rounded-lg shadow-md">
-              <i className="fa-solid fa-trophy fa-3x"></i>
-                <h1 className="text-3xl mb-4 font-semibold">You Won!! {username}</h1>
-                <p className="mb-6 text-lg">Congratulations! You've completed the game.</p>
+            <div className='flex justify-center bg-slate-300 p-16 items-center rounded-lg shadow-md -m-6'>
+              <div>
+                <div className='flex justify-evenly items-center'>
+                  <i className="fa-solid fa-trophy fa-5x"></i>
+                  <h1 className='text-5xl m-3 font-mono'>You Won!! {username}</h1>
+                </div>
                 {((username !== "") && 
                 <>
-                <div className="mb-4 none">
-                  <p className="text-gray-600 none">Your score: {score}</p>
-                  <p className="text-gray-600 none">Your score has been updated</p>
+                <div className='mt-16 left-0 none'>
+                  <h1 className='justify-self-center text-3xl font-mono'>Your score : {score}</h1>
+                  <h1 className='left-24 none'>Your score has been updated</h1>
                 </div>
                 </>) || (
-                  <>
-                  <div className="mb-4 none">
-                  <p className="text-gray-600 none">Your score: {score}</p>
+                  <div className='mt-16 left-0 none flex justify-center'>
+                  <h1 className='justify-self-center text-3xl font-mono'>Your score : {score}</h1>
                 </div>
-                  </>
                 )}
-                
-                
+                <div className='flex justify-evenly'>
+                  <Link to="/game">        
+                    <button className="custom-btn btn-7 mt-12"><span>Play as Guest</span></button>
+                  </Link>
+                  <Link to="/">        
+                    <button className="custom-btn btn-7 mt-12 ml-8"><span>Check leaderboard!</span></button>
+                  </Link>
+                </div>
               </div>
+              
             </div>
           </div>
         </>
