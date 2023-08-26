@@ -94,7 +94,7 @@ function start(){
 function checkwin(){
   for(var i=0;i<initialArray.length;i++){
     for(var j=0;j<initialArray.length;j++){
-      if(initialArray[i][j].val === 8){
+      if(initialArray[i][j].val === 2048){
         let tempArray = [{display:"Won", mode:"game-won", work:false, win:true}];
         setgame(tempArray);
         const user = {
