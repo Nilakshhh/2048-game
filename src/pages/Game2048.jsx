@@ -301,6 +301,16 @@ function handleDownClick(){
       </div>
     </div>
     <div className="sub-header"><span>Join the numbers and get to the <b>2048</b> tile!</span>
+    {((username !== "") && 
+                <>
+                <div className='sub-header'>
+                  <span>You are logged in as {username}</span>
+                </div>
+                </>) || (
+                <div className='sub-header'>
+                  <span>Please Login to save your score</span>
+                </div>
+                )}
     </div>
   </div>
         <div className="grid-box">
@@ -393,6 +403,14 @@ function handleDownClick(){
                 </div>
                   </>
                 )}
+                <div className='flex justify-evenly'>
+                  <Link to="/">        
+                    <button className="custom-btn btn-7 mt-12"><span>Return to home</span></button>
+                  </Link>
+                  <Link to="/">        
+                    <button className="custom-btn btn-7 mt-12 ml-8"><span>Check leaderboard!</span></button>
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
