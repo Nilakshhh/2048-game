@@ -300,16 +300,13 @@ function handleDownClick(){
         <div className="score-container" id="score">{score}</div>
       </div>
     </div>
-    <div className="sub-header"><span>Join the numbers and get to the <b>2048</b> tile!</span>
+    <div className="sub-header"><span>Join the numbers and reach the <b>2048</b> tile! </span>
     {((username !== "") && 
                 <>
-                <div className='sub-header'>
                   <span>You are logged in as {username}</span>
-                </div>
+                
                 </>) || (
-                <div className='sub-header'>
-                  <span>Please Login to save your score</span>
-                </div>
+                  <span>Login to save your score</span>
                 )}
     </div>
   </div>

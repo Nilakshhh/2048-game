@@ -49,7 +49,7 @@ footer{
   position: relative;
   display: inline-block;
   background: #bbada0;
-  padding: 20px 30px;
+  padding: 42px 30px;
   font-size: 30px;
   height: 30px;
   line-height: 47px;
@@ -80,7 +80,7 @@ footer{
 
 .sub-header {
   font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
-  font-size: 17px;
+  font-size: 13px;
   line-height: 45px;
   height: 45px;
 }
