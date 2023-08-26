@@ -357,7 +357,7 @@ function handleDownClick(){
                 )}
                 <div className='flex justify-evenly'>
                   <Link to="/game">        
-                    <button className="custom-btn btn-7 mt-12"><span>Play as Guest</span></button>
+                    <button className="custom-btn btn-7 mt-12"><span>Play</span></button>
                   </Link>
                   <Link to="/">        
                     <button className="custom-btn btn-7 mt-12 ml-8"><span>Check leaderboard!</span></button>
