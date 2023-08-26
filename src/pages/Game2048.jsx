@@ -2,6 +2,7 @@ import React from 'react';
 import { useState, useEffect } from "react";
 import useEventListener from '@use-it/event-listener'
 import { Link } from "react-router-dom";
+import axios from 'axios';
 
 function Game2048() {
   var doc = document;
@@ -96,6 +97,11 @@ function checkwin(){
       if(initialArray[i][j].val === 8){
         let tempArray = [{display:"Won", mode:"game-won", work:false, win:true}];
         setgame(tempArray);
+        const user = {
+          username: username,
+          highscore: score
+        }
+        axios.post('https://two048-backend.onrender.com/users/score', user)
         return;
       }
     }
