@@ -138,6 +138,11 @@ function gamelost(){
     let tempArray = [{display:"Lost", mode:"Game-ended-lost", work:false, win:false}];
         setgame(tempArray);
   }  
+  const user = {
+    username: username,
+    highscore: score
+  }
+  axios.post('https://two048-backend.onrender.com/users/score', user)
   return;
 }
 function handleLeftClick(){
@@ -356,8 +361,8 @@ function handleDownClick(){
                 </div>
                 )}
                 <div className='flex justify-evenly'>
-                  <Link to="/game">        
-                    <button className="custom-btn btn-7 mt-12"><span>Play</span></button>
+                  <Link to="/">        
+                    <button className="custom-btn btn-7 mt-12"><span>Return to home</span></button>
                   </Link>
                   <Link to="/">        
                     <button className="custom-btn btn-7 mt-12 ml-8"><span>Check leaderboard!</span></button>
