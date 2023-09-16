@@ -79,6 +79,7 @@ function start(){
   
   let tempArray = [{display:"reset",mode:"going-on", work:true, win:false}];
   setgame(tempArray);
+  setscore(0);
   const newArray = [...initialArray];
   for (let i = 0; i < newArray.length; i++) {
     for (let j = 0; j < newArray[i].length; j++) {
